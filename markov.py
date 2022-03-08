@@ -1,6 +1,7 @@
 """Generate Markov text from text files."""
 
 from random import choice
+import random
 # import readline
 
 
@@ -47,6 +48,7 @@ def make_chains(text_string):
     """
     chains = {}
     words = text_string.split()
+    words.append(None)
 
     for i in range(len(words) - 2):
 
@@ -70,13 +72,30 @@ def make_chains(text_string):
 
     return chains
 
-make_chains(seuss_text)
 
 
 def make_text(chains):
     """Return text from chains."""
 
-    words = []
+
+    key = choice(list(chains.keys()))
+    # print(key)
+    words = [key[0], key[1]]
+    # print(words)
+    word = choice(chains[key])
+    # print(word)
+
+    while word is not None:
+        key = (key[1], word)
+        words.append(word)
+        word = choice(chains[key])
+    # words = []
+    # new_dict = make_chains(seuss_text)
+    # try:
+    #     rand_key = list(new_dict.items())
+    #     random_entry = random.choice(rand_key)
+    #     words.append(random_entry)
+    # except:
 
     # your code goes here
 
