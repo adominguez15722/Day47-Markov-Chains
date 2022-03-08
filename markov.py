@@ -13,11 +13,13 @@ def open_and_read_file(file_path):
 
     # your code goes here
 
-    seuss_open = open(file_path, 'r')
-    # print(seuss_open.read())
+    contents = open(file_path).read()
+    return contents
+        
+
     # return 'Contents of your file as one long string'
 
-open_and_read_file('green-eggs.txt')
+seuss_text = open_and_read_file('green-eggs.txt')
 
 def make_chains(text_string):
     """Take input text as string; return dictionary of Markov chains.
@@ -43,33 +45,38 @@ def make_chains(text_string):
         >>> chains[('there','juanita')]
         [None]
     """
-
     chains = {}
+    words = text_string.split()
+
+    for i in range(len(words) - 1):
+        print (words[i], words[i + 1])
 
     # your code goes here
 
-    return chains
+    # return chains
+
+make_chains(seuss_text)
 
 
-def make_text(chains):
-    """Return text from chains."""
+# def make_text(chains):
+#     """Return text from chains."""
 
-    words = []
+#     words = []
 
-    # your code goes here
+#     # your code goes here
 
-    return ' '.join(words)
+#     return ' '.join(words)
 
 
-input_path = 'green-eggs.txt'
+# input_path = 'green-eggs.txt'
 
-# Open the file and turn it into one long string
-input_text = open_and_read_file(input_path)
+# # Open the file and turn it into one long string
+# input_text = open_and_read_file(input_path)
 
-# Get a Markov chain
-chains = make_chains(input_text)
+# # Get a Markov chain
+# chains = make_chains(input_text)
 
-# Produce random text
-random_text = make_text(chains)
+# # Produce random text
+# random_text = make_text(chains)
 
-print(random_text)
+# print(random_text)
